@@ -1,0 +1,19 @@
+.navbar.navbar-inverse.navbar-fixed-top.navbar-style
+  .container
+   .navbar-header
+     button.navbar-toggle.collapsed data-toggle="collapse" data-target="#example"  type="button" aria-expanded="false"
+       .sr-only Відкрить навігацію
+       span.icon-bar
+       span.icon-bar
+       span.icon-bar
+     = link_to 'KanivHelp', root_path, class: 'navbar-brand'
+   #example.collapse.navbar-collapse
+     /ul.nav.navbar-nav.navbar-right
+       li = link_to 'Вхід', new_session_path unless current_user
+       li = link_to 'Реєстрація', new_user_path unless current_user
+       li = link_to 'Вихід', session_path, method: :delete if current_user
+       li = link_to 'Всі проблеми', root_path if current_user
+       li = link_to 'Додати Проблему', new_post_path if current_user
+       li = link_to 'Профіль', user_path if current_user
+       li.navbar-text-login = current_user.first_name if current_user
+

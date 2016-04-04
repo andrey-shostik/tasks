@@ -1,0 +1,39 @@
+= form_for @user, url: user_path, class: 'form-horizontal' do |form| 
+  .container
+    .col-sm-6
+      .form-horizontal
+        h1.header Registrtion
+
+        .form-group
+          .col-sm-10
+            = form.label "Login", class: 'control-label'
+            = form.email_field :login, class: 'form-control', placeholder: 'Login'
+
+        .form-group
+          .col-sm-10
+            = form.label "Mail", class: 'control-label'
+            = form.email_field :email, class: 'form-control', placeholder: 'Mail'
+
+        .form-group
+          .col-sm-10
+            = form.label "Password", class: 'control-label'
+            = form.password_field :password, class: 'form-control', placeholder: 'Password'
+
+        .form-group
+          .col-sm-10
+            = form.label "Confirm password", class: 'control-label'
+            = form.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password'
+
+        .form-group
+          .col-sm-10
+            = form.label "First name", class: 'control-label'
+            = form.text_field :first_name, class: 'form-control', placeholder: "First name"
+
+        .form-group
+          .col-sm-10
+            = form.label "Last name", class: 'control-label'
+            = form.text_field :last_name, class: 'form-control', placeholder: 'Last name'
+
+        .form-group
+          .col-sm-10.pad
+            = form.submit 'New User'
