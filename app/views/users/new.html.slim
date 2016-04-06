@@ -2,17 +2,17 @@
   .container
     .col-sm-6
       .form-horizontal
-        h1.header Registrtion
+        h1.header Registration
 
         .form-group
           .col-sm-10
             = form.label "Login", class: 'control-label'
-            = form.email_field :login, class: 'form-control', placeholder: 'Login'
+            = form.text_field :login, class: 'form-control', placeholder: 'Login'
 
         .form-group
           .col-sm-10
-            = form.label "Mail", class: 'control-label'
-            = form.email_field :email, class: 'form-control', placeholder: 'Mail'
+            = form.label "Email", class: 'control-label'
+            = form.email_field :email, class: 'form-control', placeholder: 'Email'
 
         .form-group
           .col-sm-10

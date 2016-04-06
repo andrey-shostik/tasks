@@ -12,7 +12,9 @@ class UsersController < ApplicationController
     if @user.save
       session[:current_user_id] = @user.token
       redirect_to root_path
+      UserMailer.registration_confirmation(@user).deliver_now
     else
+      flash[:error] = 'some have invalid'
       render :new
     end
   end
@@ -20,6 +22,8 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :first_name, :last_name, :login)
+    params.require(:user).permit(:email, :password, :first_name, :last_name,
+                                 :login,
+                                 :password_confirmation)
   end
 end
