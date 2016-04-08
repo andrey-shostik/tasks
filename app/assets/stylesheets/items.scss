@@ -1,0 +1,20 @@
+// Place all the styles related to the items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$grey:  #DADADA;
+.op{
+  opacity: 0.5;
+}
+
+.dec{
+  text-decoration: line-through;
+}
+
+#item-container{
+  padding: 10px 30px;
+  background: white;
+  border: 1px solid $grey;
+  border-radius: 3px;
+  margin: 20px;
+  word-wrap: break-word;
+}

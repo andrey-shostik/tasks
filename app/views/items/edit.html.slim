@@ -1,0 +1,19 @@
+= form_for @item, class: 'form-horizontal' do |form|
+  .container
+    .col-sm-6
+      .form-horizontal
+        h1.header Update item
+
+        .form-group
+          .col-sm-10
+            = form.label "Title", class: 'control-label'
+            = form.text_field :title, class: 'form-control', placeholder: 'Title'
+
+        .form-group
+          .col-sm-10
+            = form.label "Description", class: 'control-label'
+            = form.text_area :description, class: 'form-control', placeholder: 'Description'
+
+        .form-group
+          .col-sm-10
+            = form.submit 'Update item'

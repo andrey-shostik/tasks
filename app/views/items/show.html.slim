@@ -1,0 +1,8 @@
+.container
+  .row.col-sm-8
+    #item-container
+      .pad
+        h2= @item.title
+      .pad
+        = @item.description
+      = link_to 'Back', items_path

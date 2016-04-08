@@ -1,0 +1,19 @@
+= form_for :user, url: session_path, class: 'form-horizontal' do |form| 
+  .container
+    .col-sm-6
+      .form-horizontal
+        h1.header Sign in
+
+        .form-group
+          .col-sm-10
+            = form.label "Email", class: 'control-label'
+            = form.email_field :email, class: 'form-control', placeholder: 'Email'
+
+        .form-group
+          .col-sm-10
+            = form.label "Password", class: 'control-label'
+            = form.password_field :password, class: 'form-control', placeholder: 'Password'
+
+        .form-group
+          .col-sm-10
+            = form.submit 'Sign in'

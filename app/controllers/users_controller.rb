@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :require_user
+
   def index
     @users = User.all
   end

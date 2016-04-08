@@ -3,7 +3,9 @@
     .col-sm-6
       .form-horizontal
         h1.header Registration
-
+        - if flash[:error]
+          .error
+            = flash[:error]
         .form-group
           .col-sm-10
             = form.label "Login", class: 'control-label'

@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, length: { minimum: 3 }
   validates :login, uniqueness: true
 
+  has_many :items
+
   def name
     "#{last_name} #{first_name}"
   end

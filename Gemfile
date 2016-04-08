@@ -12,6 +12,9 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'pg'
 gem 'slim-rails'
 gem 'has_secure_token'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-vkontakte'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
