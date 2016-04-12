@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :complete, :destroy, :update, :edit]
+
   def index
     @items = current_user.items.all.order("created_at DESC")
   end

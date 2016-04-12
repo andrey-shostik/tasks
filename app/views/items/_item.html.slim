@@ -1,0 +1,33 @@
+    h2.text-center  = link_to 'new Item', new_item_path
+    - @items.each do |item|
+      /#item-container
+      .row
+        - if item.completed?
+          hr
+            .op.col-sm-10
+              .dec
+                h2.item-title = link_to item.title, item_path(item)
+              .item-desc.item-sub-title
+                = item.description
+              .item-ago.item-sub-title
+                span Completed 
+                = time_ago_in_words(item.completed_at)
+                span  ago
+          .op.col-sm-2
+            = link_to item_path(item), method: :delete
+              i.glyphicon.glyphicon-remove
+        - else
+          hr
+            .col-sm-8
+              h2.item-title = link_to item.title, item_path(item)
+              = item.description
+              .item-ago.item-sub-title
+                span Created 
+                = time_ago_in_words(item.created_at)
+                span  ago
+            .col-sm-2.item-desc.item-sub-title
+              = link_to complete_item_path(item), method: :patch
+                i.glyphicon.glyphicon-ok
+            .col-sm-2
+              = link_to edit_item_path(item)
+                i.glyphicon.glyphicon-pencil

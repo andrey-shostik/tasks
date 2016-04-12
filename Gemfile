@@ -15,6 +15,7 @@ gem 'has_secure_token'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
+gem 'active_model_serializers'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'

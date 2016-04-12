@@ -8,4 +8,9 @@ Rails.application.routes.draw do
     end
   end
   resource :session
+
+  namespace :api do
+    resources :users, except: [:edit, :new]
+    resources :items, except: [:edit, :new]
+  end
 end
