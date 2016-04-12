@@ -11,7 +11,6 @@ module Authenticable
   end
 
   def require_user
-    raise NotAuthorizedError unless current_user
-    # redirect_to welcome_path unless current_user
+    redirect_to welcome_path unless current_user
   end
 end
