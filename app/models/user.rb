@@ -9,10 +9,11 @@ class User < ActiveRecord::Base
   validates :email, presence: true,
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :first_name, :last_name, length: { minimum: 3 }
+  # validates :first_name, :last_name, length: { minimum: 3 }
   validates :login, uniqueness: true
 
-  has_many :items
+  has_many :items, dependent: :destroy
+  has_many :accounts, dependent: :destroy
 
   def name
     "#{last_name} #{first_name}"

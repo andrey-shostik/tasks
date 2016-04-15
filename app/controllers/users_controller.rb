@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      binding.pry
       session[:current_user_id] = @user.token
       redirect_to root_path
       UserMailer.registration_confirmation(@user).deliver_now

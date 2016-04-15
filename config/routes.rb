@@ -13,4 +13,6 @@ Rails.application.routes.draw do
     resources :users, except: [:edit, :new]
     resources :items, except: [:edit, :new]
   end
+
+  get 'auth/:provider/callback', to: 'omniauth#create'
 end
