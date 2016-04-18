@@ -6,9 +6,10 @@ class OmniauthController < ApplicationController
     if @user
       @account[user: @user]
     else
-      @user = User.create(vk_params)
+      @user = User.create(auth_params)
       @account[user_id: @user]
     end
+    binding.pry
     @account.save
     session[:current_user_id] = @user.token
     redirect_to root_path
@@ -23,7 +24,7 @@ class OmniauthController < ApplicationController
 
   private
 
-  def vk_params
+  def auth_params
     password = "#{rand(100)}_sample_password_#{rand(100)}"
     {
       first_name: auth_hash[:extra][:raw_info][:first_name],
