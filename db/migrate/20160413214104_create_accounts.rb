@@ -4,7 +4,6 @@ class CreateAccounts < ActiveRecord::Migration
       t.string :uid
       t.string :provider
       t.string :email
-      t.string :token
       t.belongs_to :user, index: true, foreign_key: true
 
       t.timestamps null: false

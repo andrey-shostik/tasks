@@ -13,10 +13,8 @@ gem 'pg'
 gem 'slim-rails'
 gem 'has_secure_token'
 gem 'omniauth'
-gem 'omniauth-github'
-gem 'omniauth-gplus', '~> 2.0'
-gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
+gem 'omniauth-google-oauth2'
 gem 'active_model_serializers'
 
 group :development, :test do

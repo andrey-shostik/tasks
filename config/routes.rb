@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'items#index'
   resource :user
-  resource :welcome, only: [:show]
+  resource :dashboard, only: [:show]
   resources :items do
     member do
       patch :complete
@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   resource :session
 
   namespace :api do
-    resources :users, except: [:edit, :new]
-    resources :items, except: [:edit, :new]
+    resources :users, only: [:show, :index]
+    resources :items, except: [:show, :index]
   end
 
   get 'auth/:provider/callback', to: 'omniauth#create'

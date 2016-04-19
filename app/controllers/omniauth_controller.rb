@@ -4,13 +4,10 @@ class OmniauthController < ApplicationController
 
   def create
     if @user
-      @account[user: @user]
+      @account.update(user: @user)
     else
-      @user = User.create(auth_params)
-      @account[user_id: @user]
+      @user = @account.create_user(auth_params)
     end
-    binding.pry
-    @account.save
     session[:current_user_id] = @user.token
     redirect_to root_path
   end
@@ -27,8 +24,8 @@ class OmniauthController < ApplicationController
   def auth_params
     password = "#{rand(100)}_sample_password_#{rand(100)}"
     {
-      first_name: auth_hash[:extra][:raw_info][:first_name],
-      last_name: auth_hash[:extra][:raw_info][:last_name],
+      first_name: auth_hash[:info][:first_name],
+      last_name: auth_hash[:info][:last_name],
       token: auth_hash[:credentials][:token],
       email: auth_hash[:info][:email],
       password: password,
