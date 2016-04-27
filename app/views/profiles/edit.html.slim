@@ -1,0 +1,23 @@
+= form_for @profile, url: user_profile_path, class: 'form-horizontal' do |form|
+  .container
+    .col-sm-6
+      h1.header Edit your Profile
+      .form-horizontal
+        .form-group
+          .col-sm-10
+            = form.label "Username", class: 'control-label'
+            = form.text_field :username, class: 'form-control', placeholder: "Username"
+
+        .form-group
+          .col-sm-10
+            = form.label "First name", class: 'control-label'
+            = form.text_field :first_name, class: 'form-control', placeholder: "First name"
+
+        .form-group
+          .col-sm-10
+            = form.label "Last name", class: 'control-label'
+            = form.text_field :last_name, class: 'form-control', placeholder: 'Last name'
+
+        .form-group
+           .col-sm-10.pad
+             = form.submit 'Save profile'

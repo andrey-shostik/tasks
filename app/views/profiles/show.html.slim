@@ -1,0 +1,24 @@
+  .container
+    .col-sm-6
+      h1.header Your Profile
+      h3 Username:
+      div
+        h4 = @profile.username
+
+      h3 First name:
+      div
+        h4 = @profile.first_name
+
+      h3 Last name:
+      div
+        h4 = @profile.last_name
+        = link_to 'edit', edit_user_profile_path(current_user, @profile), class: 'button'
+        .pad
+
+        = form_for current_user, class: 'form-horizontal' do |form|
+          = form.label "Your api token", class: 'control-label'
+          #fe_text
+            = form.text_area :token, class: 'form-control api-key', id: 'api-area'
+        .demo-area
+          button#d_clip_button.button.my_clip_button data-clipboard-target="fe_text" data-clipboard-text=("Default clipboard text")
+           b Copy To Clipboard...
