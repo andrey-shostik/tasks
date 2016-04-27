@@ -1,18 +1,30 @@
 Rails.application.routes.draw do
-  root 'items#index'
-  resource :user
+  root 'dashboards#show'
+
+  resource :session
   resource :dashboard, only: [:show]
-  resources :items do
+
+  resources :users do
+    resource :profile, except: [:destroy]
+  end
+
+  resources :items, except: [:index] do
     member do
       patch :complete
     end
   end
-  resource :session
 
   namespace :api do
-    resources :users, only: [:show, :index]
-    resources :items, except: [:show, :index]
+    resource :session
+    resource :dashboard, only: [:show]
+
+    resources :users, except: [:edit, :new] do
+      resource :profile, except: [:destroy, :edit, :new]
+    end
+
+    resources :items, except: [:edit, :new]
   end
 
   get 'auth/:provider/callback', to: 'omniauth#create'
+  get 'api/auth/:provider/callback', to: 'api/omniauth#create'
 end
