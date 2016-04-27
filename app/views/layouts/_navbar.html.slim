@@ -9,8 +9,17 @@
      = link_to 'Checklist', root_path, class: 'navbar-brand'
    #example.collapse.navbar-collapse
      ul.nav.navbar-nav.navbar-right
+       - if current_page?(controller: 'dashboards', action: 'show') && !current_user
+         li.social-icon
+          = link_to 'auth/github/'
+            i.fa.fa-github.fa-2x.fa-lg aria-hidden="true"
+         li.social-icon
+          = link_to 'auth/vkontakte/'
+            i.fa.fa-vk.fa-2x.fa-lg aria-hidden="true"
+         li.social-icon
+           = link_to 'auth/google_oauth2/'
+             i.fa.fa-google.fa-2x.fa-lg aria-hidden="true"
        li = link_to 'Sign in', new_session_path unless current_user
        li = link_to 'Sign up', new_user_path unless current_user
        li = link_to 'Sign out', session_path, method: :delete if current_user
-       li.navbar-text-login = current_user.first_name if current_user
-
+       li.navbar-text-login = link_to current_user.email, user_profile_path(current_user) if current_user

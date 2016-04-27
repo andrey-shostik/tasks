@@ -1,6 +1,41 @@
 require 'rails_helper'
 
 RSpec.describe ItemsController, type: :controller do
+  describe '#index' do
+
+  end
+
+  describe '#new' do
+
+  end
+
+  describe '#create' do
+
+  end
+
+  describe '#show' do
+
+  end
+
+  describe '#edit' do
+
+  end
+
+  describe '#destroy' do
+
+  end
+
+  describe '#complete' do
+
+  end
+
+end
+
+
+
+require 'rails_helper'
+
+RSpec.describe ItemsController, type: :controller do
   subject { response }
 
   describe "#new" do

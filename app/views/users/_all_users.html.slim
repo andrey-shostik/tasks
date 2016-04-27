@@ -1,0 +1,3 @@
+  h3 Last registered users
+  - @users.each do |user|
+    h4 = link_to user.email, user_path(user)

@@ -22,15 +22,5 @@
             = form.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password'
 
         .form-group
-          .col-sm-10
-            = form.label "First name", class: 'control-label'
-            = form.text_field :first_name, class: 'form-control', placeholder: "First name"
-
-        .form-group
-          .col-sm-10
-            = form.label "Last name", class: 'control-label'
-            = form.text_field :last_name, class: 'form-control', placeholder: 'Last name'
-
-        .form-group
           .col-sm-10.pad
             = form.submit 'New User'

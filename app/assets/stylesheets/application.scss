@@ -17,8 +17,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$grey: #F2F2F2;
+$color-social: #333333;
+
 body{
-  background-color: #F2F2F2;
+  background-color: $grey;
   padding-top: 60px ;
   font-family: 'Open Sans', sans-serif;
 }
@@ -27,6 +30,13 @@ body{
 input[type=submit] {
   @extend .btn, .btn-default
 }
+
+
+
+.button{
+  @extend .btn, .btn-default
+}
+
 //
 
 //OTHER style
@@ -36,7 +46,7 @@ input[type=submit] {
 }
 
 body{
-  background-color: #F2F2F2;
+  background-color: $grey;
   padding-top: 60px ;
   //font-family: 'Open Sans', sans-serif;
 }
@@ -47,10 +57,8 @@ h1,h2,h3,h4,h5,h6{
 
 .navbar-text-login{
   //padding-top: 19px;
-  margin-top: 13px;
   font-size: 16px;
   color: grey;
-  text-indent:13px;
   font-style:italic;
 }
 
@@ -83,6 +91,7 @@ a {
 .navbar {
 	font-family: 'Oswald', sans-serif;
 	text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
 .navbar-default {
@@ -130,4 +139,35 @@ a {
 
 .item:nth-child(n+1) {
 	padding-top: 1.5em;
+}
+
+.social-icon{
+  font-size: 12px;
+}
+
+@media screen and (max-width:768px){
+  .nav > li.social-icon{
+    display: inline-block;
+  }
+}
+
+@media screen and (min-width:768px){
+  .nav > li.social-icon{
+    display: block;
+  }
+}
+
+.container-body{
+  background: white;
+  border: 1px solid $grey;
+  border-radius: 3px;
+  margin: 20px;
+  padding: 10px 30px;
+  word-wrap: break-word;
+}
+
+
+.error{
+  color: red;
+  padding: 5px;
 }

@@ -1,6 +1,10 @@
 .container
-  h2 You are not registred. You should come
-  h2 = link_to ' Sign up', new_user_path
-  h2 = link_to 'Sign in', new_session_path
-  h2 = link_to 'Log in with vkontakte', 'auth/vkontakte/'
-  h2 = link_to 'Log in with google', 'auth/google_oauth2/'
+  - if current_user
+    h2 = link_to 'My to do list', user_path(current_user)
+    h3 Last registered users
+    - @users.each do |user|
+      h4 = link_to user.email, user_path(user)
+  - else
+    h2 You are not registred. You should come
+    h2 = link_to ' Sign up', new_user_path
+    h2 = link_to 'Sign in', new_session_path

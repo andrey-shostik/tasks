@@ -1,0 +1,22 @@
+= form_for @user, class: 'form-horizontal' do |form|
+  .container
+    .col-sm-6
+      h1.header Set your Password
+      - if flash[:error]
+        .error
+          = flash[:error]
+      .form-horizontal
+
+        .form-group
+          .col-sm-10
+            = form.label "Password", class: 'control-label'
+            = form.password_field :password, class: 'form-control', placeholder: 'Password'
+
+        .form-group
+          .col-sm-10
+            = form.label "Password confirmation", class: 'control-label'
+            = form.password_field :password_confirmation, class: 'form-control', placeholder: 'Password confirmation'
+
+        .form-group
+           .col-sm-10.pad
+             = form.submit 'Save profile'
