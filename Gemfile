@@ -15,7 +15,9 @@ gem 'has_secure_token'
 gem 'omniauth'
 gem 'omniauth-vkontakte'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-github'
 gem 'active_model_serializers'
+gem 'zeroclipboard-rails'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
