@@ -1,6 +1,6 @@
 FactoryGirl.define do
-  factory :item do |f|
-    f.title Faker::Name.title
-    f.description Faker::Lorem.paragraph
+  factory :item do
+    title 'title'
+    description 'body body body'
   end
 end
