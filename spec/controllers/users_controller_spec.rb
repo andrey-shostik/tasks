@@ -25,8 +25,6 @@ RSpec.describe UsersController, type: :controller do
       is_expected.to be_succes
     end
 
-    it { is_expected.to be_succes }
-
     it 'render template' do
       is_expected.to render_template('new')
     end
