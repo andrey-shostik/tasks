@@ -37,24 +37,34 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe '#create' do
-    let(:user) { FactoryGirl.attributes_for(:user) }
-
     before { post :create, user: user }
 
-    it 'be created' do
-      expect(User.last.email).to eq('somemail@mail.com')
+    context 'valid data' do
+      let(:user) { FactoryGirl.attributes_for(:user) }
+
+      it 'be created' do
+        expect(User.last.email).to eq('somemail@mail.com')
+      end
+
+      it 'be found' do
+        is_expected.to have_http_status :redirect
+      end
+
+      it 'redirect_to user profile' do
+        is_expected.to redirect_to(new_user_profile_path(User.last.id))
+      end
+
+      it 'has session' do
+        expect(session[:current_user_id]).to be_eql(User.last.token)
+      end
     end
 
-    it 'be found' do
-      is_expected.to have_http_status :redirect
-    end
+    context 'invalid data' do
+      let(:user) { FactoryGirl.attributes_for(:user, email: '') }
 
-    it 'redirect_to user profile' do
-      is_expected.to redirect_to(new_user_profile_path(User.last.id))
-    end
-
-    it 'has session' do
-      expect(session[:current_user_id]).to be_eql(User.last.token)
+      it 'render template' do
+        is_expected.to render_template('new')
+      end
     end
   end
 
@@ -87,16 +97,30 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe '#update' do
-    let(:user) { FactoryGirl.create(:user) }
+    let!(:user) { FactoryGirl.create(:user) }
 
-    before do
-      put :update, id: user.id, user:
-        { password: '222222', password_confirmation: '222222' }
-      user.reload
+    context 'valid data' do
+      before do
+        put :update, id: user.id, user:
+          { password: '222222', password_confirmation: '222222' }
+        user.reload
+      end
+
+      it 'redirect_to user items' do
+        is_expected.to redirect_to(user_path(user.id))
+      end
     end
 
-    it 'redirect_to user items' do
-      is_expected.to redirect_to(user_path(user.id))
+    context 'invalid data' do
+      before do
+        put :update, id: user.id, user:
+          { password: '222222', password_confirmation: '222221' }
+        user.reload
+      end
+
+      it 'render template' do
+        is_expected.to render_template('edit')
+      end
     end
   end
 end

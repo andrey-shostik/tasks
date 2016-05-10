@@ -17,8 +17,8 @@ class UsersController < ApplicationController
       redirect_to new_user_profile_path(@user)
       # UserMailer.registration_confirmation(@user).deliver_now
     else
-      flash[:error] = 'some have invalid'
       render :new
+      flash[:error] = 'some have invalid'
     end
   end
 
