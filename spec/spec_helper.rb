@@ -11,7 +11,21 @@
 # a separate helper file that requires the additional dependencies and performs
 # the additional setup, and require it from the spec files that actually need
 # it.
-#
+require 'omniauth'
+OmniAuth.config.test_mode = true
+omniauth_hash = {
+  'provider' => 'google_oauth2',
+  'uid' => '106235777974783542914',
+  'info' => {
+    'name' => 'Андрей Шостик',
+    'email' => 'somemail@mail.com',
+    'first_name' => 'Андрей',
+    'last_name' => 'Шостик'
+  },
+  'credentials' => { 'token' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9' }
+}
+
+OmniAuth.config.add_mock(:google_oauth2, omniauth_hash)
 # The `.rspec` file also contains a few flags that are not defaults but that
 # users commonly want.
 #
