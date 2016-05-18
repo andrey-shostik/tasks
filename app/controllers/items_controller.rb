@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
   def create
     @item = current_user.items.build(item_params)
     if @item.save
-      redirect_to root_path
+      redirect_to user_path(current_user)
     else
       render :new
       flash[:error] = 'invalid'
@@ -28,9 +28,9 @@ class ItemsController < ApplicationController
   def update
     @item.update(item_params)
     if @item.save
-      redirect_to items_path
+      redirect_to item_path(@item)
     else
-      render :new
+      render :edit
     end
   end
 
@@ -51,6 +51,7 @@ class ItemsController < ApplicationController
   end
 
   def set_item
-    @item = current_user.items.find(params[:id])
+    @user = User.find(params[:id])
+    @item = @user.items.find(params[:id])
   end
 end

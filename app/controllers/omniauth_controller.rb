@@ -10,6 +10,8 @@ class OmniauthController < ApplicationController
       redirect_to root_path
     else
       @user = @account.create_user(auth_params)
+      @account.update(user: @user)
+      # , { user_id: @user.id }
       @profile = @user.create_profile(profile_params)
       UserMailer.registration_confirmation(@user).deliver_now
       session[:current_user_id] = @user.token
