@@ -21,7 +21,7 @@ RSpec.describe ItemsController, type: :controller do
       before { post :create, item: item, user_id: user.id }
 
       it { expect(user.items.first.title).to eq('title') }
-      it { is_expected.to redirect_to root_path }
+      it { is_expected.to redirect_to user_path(user.id) }
     end
 
     context 'invalid data' do
@@ -58,7 +58,7 @@ RSpec.describe ItemsController, type: :controller do
       end
 
       it { expect(assigns(:item).title).to eq('new title') }
-      it { is_expected.to redirect_to items_path }
+      it { is_expected.to redirect_to item_path(user.id) }
     end
 
     context 'invalid data' do
