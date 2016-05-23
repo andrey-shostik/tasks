@@ -19,6 +19,7 @@ gem 'omniauth-github'
 gem 'active_model_serializers'
 gem 'zeroclipboard-rails'
 gem "font-awesome-rails"
+gem 'quiet_assets', '~> 1.1'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
