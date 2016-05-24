@@ -85,6 +85,6 @@ RSpec.describe ItemsController, type: :controller do
     before { patch :complete, id: item.id, item: { completed_at: time } }
 
     it { expect(assigns(:item).completed_at).not_to be_nil }
-    it { is_expected.to redirect_to root_path }
+    it { is_expected.to redirect_to user_path(user.id) }
   end
 end

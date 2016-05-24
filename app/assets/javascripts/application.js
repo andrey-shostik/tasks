@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
-//= require bootstrap-sprockets
 //= require zeroclipboard
+//= require moment
+//= require bootstrap-sprockets
+//= require bootstrap-datetimepicker
+//= require_tree .

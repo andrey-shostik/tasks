@@ -20,6 +20,8 @@ gem 'active_model_serializers'
 gem 'zeroclipboard-rails'
 gem "font-awesome-rails"
 gem 'quiet_assets', '~> 1.1'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'

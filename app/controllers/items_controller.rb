@@ -42,13 +42,13 @@ class ItemsController < ApplicationController
 
   def complete
     @item.update_attribute(:completed_at, Time.now)
-    redirect_to root_path
+    redirect_to user_path(current_user)
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:title, :description)
+    params.require(:item).permit(:title, :description, :due_date)
   end
 
   def set_item

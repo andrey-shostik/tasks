@@ -16,4 +16,12 @@
 
         .form-group
           .col-sm-10
+            = form.label "Due date", class: 'control-label'
+            .input-group.date#datetimepicker1
+              = form.text_field :due_date, class: 'form-control'
+              span.input-group-addon
+                span.glyphicon.glyphicon-calendar
+
+        .form-group
+          .col-sm-10
             = form.submit 'New item'

@@ -1,6 +1,5 @@
     h2.text-center  = link_to 'new Item', new_item_path if current_user == @user
     - items.each do |item|
-      /#item-container
       .row
         - if item.completed?
           hr
@@ -9,6 +8,8 @@
                 h2.item-title = link_to item.title, item_path(item)
               .item-desc.item-sub-title
                 = item.description
+                div
+                  = "due date: #{ item.due_date }"
               .item-ago.item-sub-title
                 span Completed
                 = " #{time_ago_in_words(item.completed_at)}"
@@ -24,6 +25,8 @@
             .col-sm-8
               h2.item-title = link_to item.title, item_path(item)
               = item.description
+              div
+                = "due date: #{ item.due_date }"
               .item-ago.item-sub-title
                 span Created
                 = " #{time_ago_in_words(item.created_at)}"
