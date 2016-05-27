@@ -1,11 +1,11 @@
 class Api::ItemsController < ApplicationController
   skip_before_action :require_user
   before_action :check_token
+  before_action :set_item, only: [:show, :update, :delete, :complete]
 
   def index
-    if User.find_by(token: @token)
-      @items = Item.all
-      render json: @items
+    if @user = User.find_by(token: @token)
+      render json: @user.items
     else
       render text: 'Not specified token'
     end
@@ -25,8 +25,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def show
-    if User.find_by(token: @token)
-      @item = Item.find(params[:id])
+    if @user = User.find_by(token: @token)
       render json: @item
     else
       render text: 'Not specified token'
@@ -34,7 +33,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def update
-    if User.find_by(token: @token)
+    if @user = User.find_by(token: @token)
       @item.update(item_params)
       if @item.save
         render json: @item
@@ -47,7 +46,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def destroy
-    if User.find_by(token: @token)
+    if @user = User.find_by(token: @token)
       @item.destroy
       render json: @item
     else
@@ -56,7 +55,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def complete
-    if User.find_by(token: @token)
+    if @user = User.find_by(token: @token)
       @item.update_attribute(:completed_at, Time.now)
       render json: @item
     else
@@ -68,6 +67,10 @@ class Api::ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:title, :description)
+  end
+
+  def set_item
+    @item = @user.items.find(params[:id])
   end
 
   def check_token
