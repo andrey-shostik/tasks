@@ -14,12 +14,12 @@
                 span Completed
                 = " #{time_ago_in_words(item.completed_at)}"
                 span  ago
-          .op.col-sm-2
-            - if current_user != @user
-              i.glyphicon.glyphicon-remove
-            - else
-              = link_to item_path(item), method: :delete
-                i.glyphicon.glyphicon-remove
+              .op.col-sm-2
+                - if current_user != @user
+                  i.glyphicon.glyphicon-remove
+                - else
+                  = link_to item_path(item), method: :delete
+                    i.glyphicon.glyphicon-remove
         - else
           hr
             .col-sm-8

@@ -3,11 +3,16 @@ module Authenticable
 
   included do
     helper_method :current_user
+    helper_method :current_admin
     before_action :require_user
   end
 
   def current_user
     @current_user ||= User.find_by(token: session[:current_user_id])
+  end
+
+  def current_admin
+    @current_user.try(:admin)
   end
 
   def require_user

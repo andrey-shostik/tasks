@@ -21,5 +21,6 @@
              i.fa.fa-google.fa-2x.fa-lg aria-hidden="true"
        li = link_to 'Sign in', new_session_path unless current_user
        li = link_to 'Sign up', new_user_path unless current_user
+       li = link_to 'Admin', admin_root_path if current_admin
        li = link_to 'Sign out', session_path, method: :delete if current_user
        li.navbar-text-login = link_to current_user.email, user_profile_path(current_user) if current_user
