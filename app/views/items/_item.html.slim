@@ -1,4 +1,7 @@
     h2.text-center  = link_to 'new Item', new_item_path if current_user == @user
+    - if items.count < 1
+      div
+        h2.op.text-center Now here are not items
     - items.each do |item|
       .row
         - if item.completed?
@@ -14,12 +17,28 @@
                 span Completed
                 = " #{time_ago_in_words(item.completed_at)}"
                 span  ago
-              .op.col-sm-2
-                - if current_user != @user
-                  i.glyphicon.glyphicon-remove
-                - else
-                  = link_to item_path(item), method: :delete
-                    i.glyphicon.glyphicon-remove
+            .op.col-sm-2
+              - if current_user != @user
+                i.glyphicon.glyphicon-remove
+              - else
+                = link_to item_path(item), method: :delete
+                 i.glyphicon.glyphicon-remove
+        - elsif item.due_date <= Time.now
+          hr
+            .uncomplete.col-sm-10
+              .dec-uncomplete
+                h2.item-title = link_to item.title, item_path(item)
+              .item-desc.item-sub-title
+                = item.description
+                div
+                  = "due date: #{ item.due_date }"
+              .item-ago.item-sub-title
+            .uncomplete.col-sm-2
+              - if current_user != @user
+                i.glyphicon.glyphicon-remove style='color:red'
+              - else
+                = link_to item_path(item), method: :delete
+                 i.glyphicon.glyphicon-remove style='color:red'
         - else
           hr
             .col-sm-8

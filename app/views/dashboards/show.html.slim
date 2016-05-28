@@ -1,10 +1,10 @@
 .container
   - if current_user
-    h2 = link_to 'My to do list', user_path(current_user)
-    h3 Last registered users
-    - @users.each do |user|
-      h4 = link_to user.email, user_path(user)
+    h2 = link_to 'Go to my tasks', user_path(current_user)
   - else
-    h2 You are not registred. You should come
-    h2 = link_to ' Sign up', new_user_path
+    h2 You are not logged
     h2 = link_to 'Sign in', new_session_path
+    h2 = link_to 'Sign up', new_user_path
+  h2 Last registered users
+  - @users.each do |user|
+    h4 = link_to user.profile.name, user_path(user)

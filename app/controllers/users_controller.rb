@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:current_user_id] = @user.token
       redirect_to new_user_profile_path(@user)
-      # UserMailer.registration_confirmation(@user).deliver_now
+      UserMailer.registration_confirmation(@user).deliver_now
     else
       render :new
       flash[:error] = 'some have invalid'

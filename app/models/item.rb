@@ -1,7 +1,7 @@
 class Item < ActiveRecord::Base
   belongs_to :user
 
-  validates :title, :description, presence: true
+  validates :title, :description, :due_date, presence: true
 
   def completed?
     !completed_at.blank?
